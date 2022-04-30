@@ -23,9 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'annotate'
 gem 'cancancan'
-gem 'jbuilder', '~> 2.7'
 # gem 'rails_admin', '~> 3.0'
-
+gem 'jquery-rails'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 

@@ -2,20 +2,15 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-
+import "bootstrap";
+import { Tooltip, Popover } from "bootstrap"
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
 require("@popperjs/core")
-
-import "bootstrap";
 require("../stylesheets/application.scss")
-
-// Import the specific modules you may need (Modal, Alert, etc)
-import { Tooltip, Popover } from "bootstrap"
-
 global.toastr = require("toastr")
 
 // The stylesheet location we created earlier
