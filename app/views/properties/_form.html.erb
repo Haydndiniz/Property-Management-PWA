@@ -10,6 +10,35 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_type %>
+    <%= form.select :property_type, Property.property_types.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Contact email' %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Contact Name' %>
+    <%= form.text_field :main_contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

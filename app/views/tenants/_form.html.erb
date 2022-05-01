@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-sm-offset-3">
+      <div class="card card-light"><%= bootstrap_form_for(@tenant, local: true) do |form| %>
+        <div class="card-header">
+          <h2 class="text-center">Tenant Details</h2>
+        </div>
+        <div class="card-body">
+        <% if tenant.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(tenant.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+
+            <ul>
+              <% tenant.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+          <% boolean = %w(true false) %>
+
+        <div class="field">
+          <%= form.select :active, collection: boolean %>
+        </div>
+          <div class="field">
+            <% form.label :identity_type %>
+            <%= form.select :identity_type, Tenant.identity_types.keys  %>
+          </div>
+          <div class="field">
+            <% form.label :guarantor_name %>
+            <%= form.text_field :guarantor_name %>
+          </div>
+          <div class="field">
+            <% form.label :guarantor_email %>
+            <%= form.text_field :guarantor_email%>
+          </div>
+          <div class="field">
+            <%= form.select :guarantor_confirmed, collection: boolean %>
+          </div>
+        </div>
+
+        <div class="actions">
+
+          <%= form.submit %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

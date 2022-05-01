@@ -5,6 +5,7 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  config.hosts = %w[dissertationdemo.haydndiniz.dev localhost 31.205.148.0]
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -29,6 +30,19 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name:      'hadiniz1@sheffield.ac.uk',
+    password:       'zdykonrkgbeelngk',
+    domain:         'localhost:3000',
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
