@@ -1,10 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Units</h1>
-
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%=link_to "Property Details", @property, :class => "nav-link"  %>
+  </li>
+  <li class="nav-item">
+    <%=link_to "Units", property_units_path(@property) , :class => "nav-link active"  %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Maintenace</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Tenants</a>
+  </li>
+</ul>
 <table>
   <thead>
     <tr>
+      <th>Unit Name</th>
+      <th>Unit Type</th>
+      <th>Unit Price</th>
+      <th>Property id</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +32,13 @@
   <tbody>
     <% @units.each do |unit| %>
       <tr>
-        <td><%= link_to 'Show', unit %></td>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= unit.unit_name %></td>
+        <td><%= unit.unit_type %></td>
+        <td><%= unit.rent_price %></td>
+        <td><%= unit.property.id %></td>
+        <td><%= link_to 'Show', [@property, unit] %></td>
+        <td><%= link_to 'Edit', edit_property_unit_path(@property,unit) %></td>
+        <td><%= link_to 'Destroy', [@property,unit], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +46,4 @@
 
 <br>
 
-<%= link_to 'New Unit', new_unit_path %>
+<%= link_to 'New Unit', new_property_unit_path %>

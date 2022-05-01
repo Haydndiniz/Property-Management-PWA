@@ -2,5 +2,5 @@
 
 <%= render 'form', unit: @unit %>
 
-<%= link_to 'Show', @unit %> |
-<%= link_to 'Back', units_path %>
+<%= link_to 'Show', [@property,@unit]%> |
+<%= link_to 'Back', property_units_path(@property) %>

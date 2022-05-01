@@ -10,3 +10,10 @@ User.where(email: 'admin@example.com')
       password: 'password',
       role: 'admin'
     )
+
+Property.first_or_create(
+  name: 'property 1',
+  description: 'lorem ipsum dolor sit a met',                        
+  property_type: 0,
+  address: '001001'
+)

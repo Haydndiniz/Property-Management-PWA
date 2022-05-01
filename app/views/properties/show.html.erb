@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @property.name %> </h1>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%=link_to "Property Details", @property, :class => "nav-link active"  %>
+  </li>
+  <li class="nav-item">
+    <%=link_to "Units", property_units_path(@property) , :class => "nav-link"  %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Maintenace</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Tenants</a>
+  </li>
+</ul>
+<p>
+  <strong>Name:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @property.description %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @property.property_type %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

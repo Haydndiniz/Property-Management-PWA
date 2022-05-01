@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Property</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Maintenace</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Tenants</a>
+  </li>
+</ul>
+
+  <div><h1>Properties</h1></div>
+  <%= link_to 'New Property', new_property_path, class: 'btn btn-primary text-white '%></div>
+<br>
+
+
+<div class="container">
+<div class="row row-cols-1 row-cols-md-3 ">
+  <% @properties.each do |property| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <% if property.image.attached? %>
+          <%= image_tag property.image, class: 'card-img-top', height: 200 if property.image.attached?%>
+        <%else %>
+          <%= image_tag 'fallback/property_placeholder.jpeg',class: 'card-img-top', height: 200 %>
+        <%end %>
+        <div class="card-body">
+          <h5 class="card-title"> <%= property.name %></h5>
+          <p class="card-text">Type: <%= property.property_type %></p>
+          <%= link_to 'Show', property, class: 'btn btn-primary text-white' %>
+          <%= link_to 'Edit', property, class: 'btn btn-secondary text-white' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+<br>
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Description</th>-->
+<!--      <th>Property type</th>-->
+<!--      <th>Address</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+<%# @properties.each do |property| %>
+<!--      <tr>-->
+<!--        <td><%#= property.name %></td>-->
+<!--        <td><%#= property.description %></td>-->
+<!--        <td><%#= property.property_type %></td>-->
+<!--        <td><%#= property.address %></td>-->
+<!--        <td><%#= link_to 'Show', property %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_property_path(property) %></td>-->
+<!--        <td><%#= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+

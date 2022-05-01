@@ -11,6 +11,7 @@ class CreateProperties < ActiveRecord::Migration[6.0]
       t.integer :no_of_units
       t.integer :available_units
 
+
       t.timestamps
     end
   end

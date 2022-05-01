@@ -17,7 +17,7 @@
 #
 class Property < ApplicationRecord
   has_one_attached :image
-  has_many :units
+  has_many :units, dependent: :destroy
   # has_many :resources
 
   enum property_type: {
@@ -25,7 +25,6 @@ class Property < ApplicationRecord
     townhouse: 1,
     houseboat: 2,
     warehouse: 3,
-    dormitory: 4,
-    single_room: 5
+    dormitory: 4
   }
 end
