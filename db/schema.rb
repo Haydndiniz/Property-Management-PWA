@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_194410) do
+ActiveRecord::Schema.define(version: 2022_05_01_144132) do
+
+  create_table "properties", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "property_type"
+    t.json "address"
+    t.string "phone"
+    t.string "email"
+    t.string "main_contact"
+    t.integer "no_of_units"
+    t.integer "available_units"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.integer "property_id"
+    t.string "unit_name"
+    t.integer "unit_type"
+    t.string "description"
+    t.integer "rent_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_units_on_property_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -34,4 +59,5 @@ ActiveRecord::Schema.define(version: 2022_04_30_194410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "units", "properties"
 end

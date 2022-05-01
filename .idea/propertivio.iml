@@ -37,6 +37,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activejob (v6.0.4.8, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v6.0.4.8, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v6.0.4.8, rbenv: 2.6.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord-session_store (v2.0.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v6.0.4.8, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v6.0.4.8, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.0, rbenv: 2.6.6) [gem]" level="application" />
@@ -71,6 +72,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.2, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.15.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.5.1, rbenv: 2.6.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.15.0, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.4, rbenv: 2.6.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.6.6) [gem]" level="application" />
@@ -126,6 +128,7 @@
       <list>
         <option value="active_record:application_record" />
         <option value="active_record:devise" />
+        <option value="active_record:session_migration" />
         <option value="annotate:install" />
         <option value="application_record" />
         <option value="assets" />
@@ -163,6 +166,7 @@
       <list>
         <option value="active_record:application_record" />
         <option value="active_record:devise" />
+        <option value="active_record:session_migration" />
         <option value="annotate:install" />
         <option value="application_record" />
         <option value="assets" />
@@ -323,6 +327,14 @@
               <RakeTaskImpl id="seed">
                 <subtasks>
                   <RakeTaskImpl description="Truncates tables of each database for current environment and loads the seeds" fullCommand="db:seed:replant" id="replant" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="sessions">
+                <subtasks>
+                  <RakeTaskImpl description="Clear the sessions table" fullCommand="db:sessions:clear" id="clear" />
+                  <RakeTaskImpl description="Creates a sessions migration for use with ActiveRecord::SessionStore" fullCommand="db:sessions:create" id="create" />
+                  <RakeTaskImpl description="Trim old sessions from the table (default: &gt; 30 days)" fullCommand="db:sessions:trim" id="trim" />
+                  <RakeTaskImpl description="Upgrade current sessions in the database to the secure version" fullCommand="db:sessions:upgrade" id="upgrade" />
                 </subtasks>
               </RakeTaskImpl>
               <RakeTaskImpl description="Creates the database, loads the schema, and initializes with the seed data (use db:reset to also drop the database first)" fullCommand="db:setup" id="setup" />

@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: units
+#
+#  id          :integer          not null, primary key
+#  description :string
+#  rent_price  :integer
+#  unit_name   :string
+#  unit_type   :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  property_id :integer
+#
+# Indexes
+#
+#  index_units_on_property_id  (property_id)
+#
+# Foreign Keys
+#
+#  property_id  (property_id => properties.id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
