@@ -1,6 +1,7 @@
 class CreateTenants < ActiveRecord::Migration[6.0]
   def change
     create_table :tenants do |t|
+      t.belongs_to :user
       t.boolean :active
       t.string  :identity_num
       t.integer :identity_type

@@ -18,10 +18,10 @@ class Ability
       can :update, Resource
       # can :update, Maintainence
       can :manage, Tenant
-    elsif user.tenant?
-      can :read, Tenant
-      can :read, Unit
-      can :update, User
+    # elsif user.tenant?
+    #   can :read, Tenant
+    #   can :read, Unit
+    #   can :update, User
       # can [:create, :update], Maintanence
     else
       can :read, Property

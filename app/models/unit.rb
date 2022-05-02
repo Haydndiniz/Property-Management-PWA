@@ -21,7 +21,7 @@
 #
 class Unit < ApplicationRecord
   belongs_to :property
-  # has_one :tenant
+  has_one :tenant
 
   enum unit_type: {
     studio: 0,
