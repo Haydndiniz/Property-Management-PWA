@@ -4,9 +4,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    #   user ||= User.new # guest user (not logged in)
+    user ||= User.new # guest user (not logged in)
     if user.admin?
+      can :access, :rails_admin
       can :manage, :all
+      can :read, :dashboard
     elsif user.manager?
       can :update, Property
       can :manage, Unit
@@ -16,12 +18,13 @@ class Ability
       can :update, Resource
       # can :update, Maintainence
       can :manage, Tenant
-    else
+    elsif user.tenant?
       can :read, Tenant
-      can  :read, Unit
+      can :read, Unit
       can :update, User
       # can [:create, :update], Maintanence
-
+    else
+      can :read, Property
     end
   end
 end

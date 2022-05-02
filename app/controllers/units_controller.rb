@@ -1,7 +1,7 @@
 class UnitsController < ApplicationController
   before_action :set_property
   before_action :set_unit, only: %i[show edit update destroy]
-
+  authorize_resource
   # GET /units or /units.json
   def index
     @units = @property.units

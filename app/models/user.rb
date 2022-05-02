@@ -43,6 +43,11 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: { admin: 0, manager: 1, staff: 2, tenant: 3 }
+  ROLES = %w[admin manager staff tenant].freeze
   has_one :tenant, -> { where(role: 3) }
+
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
 
 end

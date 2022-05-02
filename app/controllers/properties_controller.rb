@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
-
+  authorize_resource
   # GET /properties or /properties.json
   def index
     @properties = Property.all

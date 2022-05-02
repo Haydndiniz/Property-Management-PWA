@@ -31,6 +31,7 @@ gem 'activerecord-session_store'
 gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
 gem "bootstrap_form", "~> 5.0"
+gem 'rails_admin', '~> 3.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
