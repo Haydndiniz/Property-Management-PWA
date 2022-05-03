@@ -1,22 +1,60 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Tenants</h1>
+<div>
+  <%= link_to 'Create New Tenant', new_tenant_path %>
+  <%= link_to 'Invite New Tenant', new_tenant_invitation_path %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Active?</th>
+    <th>Guarantor Name</th>
+    <th>Guarantor Confirmed?</th>
+    <th>Actions</th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @tenants.each do |tenant| %>
-      <tr>
-        <td><%= link_to 'Show', tenant %></td>
-        <td><%= link_to 'Edit', edit_tenant_path(tenant) %></td>
-        <td><%= link_to 'Destroy', tenant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @tenants.each do |tenant| %>
+  <tr>
+    <td>
+      <div class="d-flex align-items-center">
+        <% if tenant.avatar_url? %>
+          <%= image_tag tenant.avatar_url, class: 'rounded-circle', height: '35px', width: '35px'%>
+        <%else %>
+          <%= image_tag 'fallback/profile_placeholder.jpg',class: 'rounded-circle', height: '35px', width: '35px' %>
+        <%end %>
+        <div class="ms-3">
+          <p class="fw-bold mb-1"><%=tenant.first_name %></p>
+          <p class="text-muted mb-0"><%=tenant.last_name %></p>
+        </div>
+      </div>
+    </td>
+    <td>
+      <p class="fw-normal mb-1"><%=tenant.email %></p>
+    </td>
+    <td><%=tenant.phone %></td>
+    <td>
+      <div class="badge badge-success rounded-pill d-inline">
+        <%=tenant.active %>
+      </div>
+    </td>
+    <td><%=tenant.guarantor_name %></td>
+    <td>
+        <%=tenant.guarantor_confirmed %>
+    </td>
+    <td>
+      <%= link_to 'View', tenant, :class => "btn btn-sm btn-rounded"%>
+      <%= link_to 'Edit', edit_tenant_path(tenant), :class => "btn btn-sm btn-rounded"%>
+      <%= link_to 'Delete', tenant, method: :delete, data: { confirm: 'Are you sure?' },  :class => "btn btn-sm btn-rounded"%>
+    </td>
+  </tr>
+  </tr>
+  <% end %>
   </tbody>
 </table>
 

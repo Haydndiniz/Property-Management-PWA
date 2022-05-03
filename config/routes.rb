@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :properties do
     resources :units
+    resources :maintenance_requests
   end
   devise_for :users
   devise_for :tenants

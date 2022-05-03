@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Maintenance Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @maintenance_requests.each do |maintenance_request| %>
+      <tr>
+        <td><%= link_to 'Show', [@property, maintenance_request] %></td>
+        <td><%= link_to 'Edit', edit_property_maintenance_request_path(@property, maintenance_request) %></td>
+        <td><%= link_to 'Destroy', [@property, maintenance_request], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Maintenance Request', new_property_maintenance_request_path %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Tenants</h1>
+<div>
+  <%= link_to 'Create New Tenant', new_tenant_path %>
+  <%= link_to 'Invite New Tenant', new_tenant_invitation_path %>
+</div>
+
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+  <tr>
+    <th>Subject</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Last updated</th>
+    <th>Tenant</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @maintenance_requests.each do |main| %>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+
+          <div class="ms-3">
+            <p class="fw-bold mb-1"><%=main.subject %></p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1"><%=main.description %></p>
+      </td>
+      <td><%=main.status %></td>
+      <td>
+        <div class="badge badge-success rounded-pill d-inline">
+          <%=main.updated_at %>
+        </div>
+      </td>
+      <td><%=main.tenant_id %></td>
+
+      <td>
+      <td><%= link_to 'Show', [@property, main] %></td>
+      <td><%= link_to 'Edit', edit_property_maintenance_request_path(@property,main) %></td>
+      <td><%= link_to 'Destroy', [@property,main], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </td>
+    </tr>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

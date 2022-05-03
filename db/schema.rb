@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_110909) do
+ActiveRecord::Schema.define(version: 2022_05_03_005528) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2022_05_02_110909) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "maintenance_requests", force: :cascade do |t|
+    t.string "subject"
+    t.text "description"
+    t.boolean "status"
+    t.integer "tenant_id"
+    t.integer "property_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_maintenance_requests_on_property_id"
+    t.index ["tenant_id"], name: "index_maintenance_requests_on_tenant_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -48,7 +60,11 @@ ActiveRecord::Schema.define(version: 2022_05_02_110909) do
   end
 
   create_table "tenants", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "unit_id"
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "phone"
+    t.string "avatar_url"
     t.boolean "active"
     t.string "identity_num"
     t.integer "identity_type"
@@ -59,12 +75,25 @@ ActiveRecord::Schema.define(version: 2022_05_02_110909) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "uid"
+    t.string "provider"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.integer "invited_by_id"
+    t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_tenants_on_email", unique: true
+    t.index ["invitation_token"], name: "index_tenants_on_invitation_token", unique: true
+    t.index ["invited_by_id"], name: "index_tenants_on_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_tenants_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_tenants_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_tenants_on_user_id"
+    t.index ["unit_id"], name: "index_tenants_on_unit_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -83,6 +112,7 @@ ActiveRecord::Schema.define(version: 2022_05_02_110909) do
     t.string "last_name", default: "", null: false
     t.string "avatar_url"
     t.integer "role"
+    t.string "phone"
     t.string "uid"
     t.string "provider"
     t.string "email", default: "", null: false
@@ -112,5 +142,7 @@ ActiveRecord::Schema.define(version: 2022_05_02_110909) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "maintenance_requests", "properties"
+  add_foreign_key "maintenance_requests", "tenants"
   add_foreign_key "units", "properties"
 end

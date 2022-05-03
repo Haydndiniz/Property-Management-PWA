@@ -7,13 +7,39 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.where(email: 'admin@example.com')
     .first_or_create(
+      first_name: 'admin',
+      last_name: 'admin',
       password: 'password',
       role: 'admin'
     )
-
+User.where(email: 'manager@example.com')
+    .first_or_create(
+      first_name: 'manager',
+      last_name: 'manager',
+      password: 'password',
+      role: 'manager'
+    )
+User.where(email: 'staff@example.com')
+    .first_or_create(
+      first_name: 'staff',
+      last_name: 'Staff',
+      password: 'password',
+      role: 'staff'
+    )
 Property.first_or_create(
   name: 'property 1',
-  description: 'lorem ipsum dolor sit a met',                        
+  description: 'lorem ipsum dolor sit a met',
   property_type: 0,
   address: '001001'
 )
+Unit.first_or_create(
+  unit_name: 'Unit 1',
+  description: 'lorem ipsum dolor sit a met',
+  unit_type: 0
+)
+Tenant.where(first_name: 'tenant',
+             last_name: 'tenant',
+             email: 'tenant@example.com'
+)
+
+

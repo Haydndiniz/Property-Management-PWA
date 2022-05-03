@@ -19,6 +19,7 @@
 #  last_name              :string           default(""), not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
+#  phone                  :string
 #  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime

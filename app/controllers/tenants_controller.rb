@@ -14,6 +14,8 @@ class TenantsController < ApplicationController
   # GET /tenants/new
   def new
     @tenant = Tenant.new
+    puts @tenant.unit.property_id
+    puts 'here'
   end
 
   # GET /tenants/1/edit
