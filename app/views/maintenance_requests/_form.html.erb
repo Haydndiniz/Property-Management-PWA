@@ -10,6 +10,26 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.text_field :Subject %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenant_id %>
+    <%= form.text_field :tenant_id,placeholder: current_tenant.id ,:input_html => { :value => current_tenant.id }, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Status'%>
+    <%= form.text_field :status ,placeholder: "reported", :input_html => { :value => 0 }, disabled: true %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>

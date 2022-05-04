@@ -1,4 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 bg-dark rounded">
+  <div class="row gx-lg-5 align-items-center mb-5">
 
-<%= link_to 'Edit', edit_property_unit_path(@property, @unit) %> |
-<%= link_to 'Back', property_units_path(@property) %>
+      <div class="card bg-glass">
+        <div class="card-body px-4 py-5 px-md-5">
+
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <h4 class="card-title">Unit Details</h4>
+          <div class="card-text">
+            <p>
+              <b>Unit Name:</b>
+              <%=@unit.unit_name %>
+            </p>
+            <p>
+              <b>Unit Type:</b>
+              <%= @unit.unit_type %>
+            </p>
+            <p>
+              <b>Description:</b>
+              <%=@unit.description %>
+            </p>
+            <p>
+              <b>Price :</b>
+              <%=@unit.rent_price %>
+            </p>
+            <p>
+              <b>Property Name:</b>
+              <%=@property.name %>
+            </p>
+            <p>
+              <b>Current Tenant:</b>
+              <%=Tenant.find_by_id(@unit.id).email%>
+            </p>
+
+
+            <%= link_to 'Edit', rails_admin_path(@property, @unit), class: 'btn btn-primary text-white' %> |
+            <%= link_to 'Back', property_units_path(@property), class: 'btn btn-primary text-white' %>
+
+          </div>
+
+
+        </div>
+      </div>
+
+
+  </div>
+</div>

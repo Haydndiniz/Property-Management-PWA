@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 <div><h1>Properties</h1></div>
-<%= link_to 'New Property', new_property_path, class: 'btn btn-primary text-white '%></div>
+<% if user_signed_in? %>
+  <%= link_to 'New Property', rails_admin_path, class: 'btn btn-primary text-white '%></div>
+  <%end %>
 <br>
 
 
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-3 ">
+  <div class="row row-cols-1 row-cols-md-4 ">
     <% @properties.each do |property| %>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-3 mb-3">
         <div class="card h-100">
           <% if property.image.attached? %>
             <%= image_tag property.image, class: 'card-img-top', height: 200 if property.image.attached?%>
@@ -18,7 +20,11 @@
             <h5 class="card-title"> <%= property.name %></h5>
             <p class="card-text">Type: <%= property.property_type %></p>
             <%= link_to 'Show', property, class: 'btn btn-primary text-white' %>
-            <%= link_to 'Edit', property, class: 'btn btn-secondary text-white' %>
+            <% if user_signed_in? %>
+
+              <%= link_to 'Edit', property, class: 'btn btn-secondary text-white' %>
+            <%end %>
+
           </div>
         </div>
       </div>

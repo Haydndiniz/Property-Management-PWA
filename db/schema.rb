@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_05_03_005528) do
 
   create_table "tenants", force: :cascade do |t|
     t.integer "unit_id"
+    t.integer "property_id"
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "phone"
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_05_03_005528) do
     t.index ["invitation_token"], name: "index_tenants_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_tenants_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_tenants_on_invited_by_type_and_invited_by_id"
+    t.index ["property_id"], name: "index_tenants_on_property_id"
     t.index ["reset_password_token"], name: "index_tenants_on_reset_password_token", unique: true
     t.index ["unit_id"], name: "index_tenants_on_unit_id"
   end

@@ -23,5 +23,6 @@
 #
 class MaintenanceRequest < ApplicationRecord
   belongs_to :property
-  enum status: {}
+  belongs_to :tenant
+  enum status: {pending:0, in_progress: 1, completed: 2 }
 end

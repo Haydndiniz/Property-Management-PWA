@@ -4,18 +4,32 @@ class TenantsController < ApplicationController
 
   # GET /tenants or /tenants.json
   def index
-    @tenants = Tenant.all
+    if tenant_signed_in?
+      redirect_to tenant_path(current_tenant)
+    else
+      @tenants = Tenant.all
+    end
   end
 
   # GET /tenants/1 or /tenants/1.json
   def show
+    if tenant_signed_in?
+      @tenant = current_tenant
+      @unit = current_tenant.unit
+      @property = current_tenant.property
+    else user_signed_in?
+    @tenant = Tenant.find(params[:id])
+    @unit = @tenant.unit
+    @property = @tenant.property
+
+    end
   end
 
   # GET /tenants/new
   def new
     @tenant = Tenant.new
-    puts @tenant.unit.property_id
-    puts 'here'
+    # puts @tenant.unit.property_id
+    # puts 'here'
   end
 
   # GET /tenants/1/edit

@@ -2,8 +2,8 @@
 
 <h1>Tenants</h1>
 <div>
-  <%= link_to 'Create New Tenant', new_tenant_path %>
-  <%= link_to 'Invite New Tenant', new_tenant_invitation_path %>
+  <%= link_to 'Create New Tenant', rails_admin_path, :class => "btn btn-primary text-white"%>
+  <%= link_to 'Invite New Tenant', new_tenant_invitation_path,:class => "btn btn-secondary text-white" %>
 </div>
 
 <table class="table align-middle mb-0 bg-white">
@@ -13,7 +13,7 @@
     <th>Email</th>
     <th>Phone</th>
     <th>Active?</th>
-    <th>Guarantor Name</th>
+    <th>Property Name</th>
     <th>Guarantor Confirmed?</th>
     <th>Actions</th>
   </tr>
@@ -39,17 +39,21 @@
     </td>
     <td><%=tenant.phone %></td>
     <td>
-      <div class="badge badge-success rounded-pill d-inline">
+      <div class="badge rounded-pill bg-secondary d-inline">
         <%=tenant.active %>
       </div>
     </td>
-    <td><%=tenant.guarantor_name %></td>
     <td>
+      <%=tenant.property.name %>
+    </td>
+    <td>
+      <div class="badge rounded-pill bg-secondary d-inline ">
         <%=tenant.guarantor_confirmed %>
+      </div>
     </td>
     <td>
       <%= link_to 'View', tenant, :class => "btn btn-sm btn-rounded"%>
-      <%= link_to 'Edit', edit_tenant_path(tenant), :class => "btn btn-sm btn-rounded"%>
+      <%= link_to 'Edit', rails_admin_path, :class => "btn btn-sm btn-rounded "%>
       <%= link_to 'Delete', tenant, method: :delete, data: { confirm: 'Are you sure?' },  :class => "btn btn-sm btn-rounded"%>
     </td>
   </tr>
@@ -58,6 +62,4 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Tenant', new_tenant_path %>

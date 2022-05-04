@@ -1,4 +1,112 @@
-<p id="notice"><%= notice %></p>
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 bg-dark rounded">
+  <div class="row gx-lg-5 align-items-center mb-5">
+    <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+      <div class="card bg-glass">
+        <div class="card-body px-4 py-5 px-md-5">
 
-<%= link_to 'Edit', edit_tenant_path(@tenant) %> |
-<%= link_to 'Back', tenants_path %>
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <h4 class="card-title">Tenant Details</h4>
+          <div class="card-text">
+            <p>
+              <b>First Name:</b>
+              <%=@tenant.first_name %>
+            </p>
+            <p>
+              <b>Last Name:</b>
+              <%=@tenant.last_name %>
+            </p>
+            <p>
+              <b>Email:</b>
+              <%=@tenant.email %>
+            </p>
+            <p>
+              <b>Phone:</b>
+              <%=@tenant.phone %>
+            </p>
+            <p>
+              <b>Identification Type:</b>
+              <%=@tenant.identity_type %>
+            </p>
+            <p>
+              <b>Identification Number:</b>
+              <%=@tenant.identity_num %>
+            </p>
+            <p>
+              <b>Profile image link:</b>
+              <%=@tenant.avatar_url %>
+            </p>
+            <p>
+              <b>Account Active?:</b>
+              <%=@tenant.active %>
+            </p>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6 mb-5 mb-lg-0 position-relative  ">
+      <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+      <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+      <div class="card bg-glass h-auto ">
+        <div class="card-body px-4 py-5 px-md-5 ">
+
+        <h4 class="card-title">Lease Details</h4>
+        <div class="card-text">
+          <p>
+            <b>Property Name:</b>
+            <%=@property.name %>
+          </p>
+          <p>
+            <b>Unit:</b>
+            <%=@unit.unit_name %>
+          </p>
+
+          <p>
+            <b>Guarantor Name:</b>
+            <%=@tenant.guarantor_name %>
+          </p>
+          <p>
+            <b>Guarantor email:</b>
+            <%=@tenant.guarantor_email %>
+          </p>
+          <p>
+            <b>Guarantor Confirmed:</b>
+            <%=@tenant.guarantor_confirmed %>
+          </p>
+          <p>
+            <b>Guarantor Confirmed:</b>
+            <%=@tenant.guarantor_confirmed %>
+          </p>
+          <p>
+            <b>Contract:</b>
+            <%if @tenant.contract.attached? %>
+              <%= link_to rails_blob_path(@tenant.contract, target: :_blank) do %>
+              Download Contract
+              <%end %>
+
+          <%else %>
+              <%end %>
+          </p>
+          <p> .</p>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <%= link_to 'Back', tenants_path , class: 'btn btn-primary text-white' %>
+
+  <% if user_signed_in? %>
+    <%= link_to 'Edit Tenant', rails_admin_path, class: 'btn btn-secondary text-white' %>
+  <% else %>
+    <%= link_to 'Edit Details', edit_tenant_registration_path, class: 'btn btn-secondary text-white' %>
+
+  <%end %>
+</div>

@@ -30,6 +30,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invited_by_id          :integer
+#  property_id            :integer
 #  unit_id                :integer
 #
 # Indexes
@@ -38,6 +39,7 @@
 #  index_tenants_on_invitation_token                   (invitation_token) UNIQUE
 #  index_tenants_on_invited_by_id                      (invited_by_id)
 #  index_tenants_on_invited_by_type_and_invited_by_id  (invited_by_type,invited_by_id)
+#  index_tenants_on_property_id                        (property_id)
 #  index_tenants_on_reset_password_token               (reset_password_token) UNIQUE
 #  index_tenants_on_unit_id                            (unit_id)
 #

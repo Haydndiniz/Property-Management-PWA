@@ -18,7 +18,7 @@
 class Property < ApplicationRecord
   has_one_attached :image
   has_many :units, dependent: :destroy
-  has_many :tenants, dependent: :destroy
+  # has_many :tenants, dependent: :destroy
   has_many :maintenance_requests, dependent: :destroy
   # has_many :resources
 

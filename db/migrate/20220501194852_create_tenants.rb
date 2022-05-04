@@ -2,6 +2,7 @@ class CreateTenants < ActiveRecord::Migration[6.0]
   def change
     create_table :tenants do |t|
       t.belongs_to :unit
+      t.belongs_to :property
       t.string :first_name, null: false, default: ""
       t.string :last_name, null: false, default: ""
       t.string :phone

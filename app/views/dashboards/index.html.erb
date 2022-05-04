@@ -1,1 +1,40 @@
-<h1>Dashboard</h1>
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 bg-dark rounded">
+  <div class="row gx-lg-5 align-items-center mb-5">
+    <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+      <h1 class="my-5 display-5 fw-bold ls-tight text-warning">
+        Propertivo<br>
+
+        <span class="text-secondary">A Property Management System</span>
+      </h1>
+      <p class="mb-4 opacity-70 text-warning" >
+        Welcome to Propertivo!
+        <br>Please use the links on the right to sign in.
+        <br>If you do not have an account, Please contact us or arrange a viewing.
+      </p>
+    </div>
+
+    <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+      <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+      <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+      <div class="card bg-glass">
+        <div class="card-body px-4 py-5 px-md-5">
+
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+          <h4 class="card-title">Tenant Sign in</h4>
+          <p class="card-text">Use the link below to sign in as a Tenant</p>
+          <%= link_to('Tenant Sign in', new_tenant_session_path, :class => "btn btn-dark text-white") %>
+
+        </div>
+        <ul class="list-group list-group-flush">
+        </ul>
+          <div class="card-body px-4 py-5 px-md-5">
+            <h4 class="card-title">Staff Sign in</h4>
+            <p class="card-text">Use the link below to sign in as a member of Staff</p>
+            <%= link_to('Staff Sign in', new_user_session_path, :class => "btn btn-dark text-white") %>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

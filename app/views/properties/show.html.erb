@@ -7,15 +7,25 @@
   <li class="nav-item">
     <%=link_to "Units", property_units_path(@property) , :class => "nav-link"  %>
   </li>
+<!--  <li class="nav-item">-->
+<!--    <a class="nav-link" href="#">Resources</a>-->
+<!--  </li>-->
   <li class="nav-item">
-    <a class="nav-link" href="#">Resources</a>
+    <%=link_to "Maintenance", property_maintenance_requests_path(@property) , :class => "nav-link"  %>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Maintenace</a>
-  </li>
-  <li class="nav-item">
-    <%=link_to "Units", property_unit_tenants_path(@property) , :class => "nav-link"  %>
-  </li>
+  <% if user_signed_in? %>
+    <li class="nav-item">
+      <%=link_to "Units", property_units_path(@property) , :class => "nav-link"  %>
+    </li>
+  <%end %>
+  <% if tenant_signed_in? %>
+    <li class="nav-item">
+      <%=link_to "Tenant Details", edit_tenant_registration_path(@tenant) , :class => "nav-link"  %>
+    </li>
+  <%end %>
+
+
+
 </ul>
 <p>
   <strong>Name:</strong>
@@ -36,6 +46,8 @@
   <strong>Address:</strong>
   <%= @property.address %>
 </p>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_property_path(@property) , class: "btn btn-secondary text-white" %>
+<%end %>
 
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>
+<%= link_to 'Back', properties_path, class: "btn btn-secondary text-white" %>
